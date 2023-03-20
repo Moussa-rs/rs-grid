@@ -1,7 +1,10 @@
 <template>
   <div ref="item" class="vue-grid-item" :class="classObj" :style="style">
     <slot></slot>
-    <span v-if="resizableAndNotStatic" ref="handle" :class="resizableHandleClass"></span>
+    <slot v-if="resizableAndNotStatic" ref="handle" name="resize-handle">
+      <span   :class="resizableHandleClass"></span>
+    </slot>
+    <slot v-if="draggable" ref="dragHandle" name="drage-handle"></slot>
     <!--<span v-if="draggable" ref="dragHandle" class="vue-draggable-handle"></span>-->
   </div>
 </template>
