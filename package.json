@@ -1,7 +1,7 @@
 {
   "name": "rs-grid",
   "description": "a draggable and resizable vue grid component.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "private": true,
   "scripts": {

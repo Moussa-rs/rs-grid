@@ -1,5 +1,5 @@
 // @flow
-export type LayoutItemRequired = { w: number; h: number; x: number; y: number; i: string }
+export type LayoutItemRequired = { w: number; h: number; x: number; y: number; id: string }
 export type LayoutItem = LayoutItemRequired & {
   minW?: number
   minH?: number
@@ -52,7 +52,7 @@ export function cloneLayout(layout: Layout): Layout {
 // Fast path to cloning, since this is monomorphic
 export function cloneLayoutItem(layoutItem: LayoutItem): LayoutItem {
   /*return {
-    w: layoutItem.w, h: layoutItem.h, x: layoutItem.x, y: layoutItem.y, i: layoutItem.i,
+    w: layoutItem.w, h: layoutItem.h, x: layoutItem.x, y: layoutItem.y, i: layoutItem.id,
     minW: layoutItem.minW, maxW: layoutItem.maxW, minH: layoutItem.minH, maxH: layoutItem.maxH,
     moved: boolean(layoutItem.moved), static: boolean(layoutItem.static),
     // These can be null
@@ -130,7 +130,7 @@ export function compactItem(
       l.y--
     }
   } else if (minPositions) {
-    const minY = minPositions[l.i].y
+    const minY = minPositions[l.id].y
     while (l.y > minY && !getFirstCollision(compareWith, l)) {
       l.y--
     }
@@ -182,7 +182,7 @@ export function correctBounds(layout: Layout, bounds: { cols: number }): Layout 
  */
 export function getLayoutItem(layout: Layout, id: string): LayoutItem {
   for (let i = 0, len = layout.length; i < len; i++) {
-    if (layout[i].i === id) return layout[i]
+    if (layout[i].id === id) return layout[i]
   }
 }
 
@@ -264,7 +264,7 @@ export function moveElement(
   // Move each item that collides away from this element.
   for (let i = 0, len = collisions.length; i < len; i++) {
     const collision = collisions[i]
-    // console.log('resolving collision between', l.i, 'at', l.y, 'and', collision.i, 'at', collision.y);
+    // console.log('resolving collision between', l.id, 'at', l.y, 'and', collision.id, 'at', collision.y);
 
     // Short circuit so we can't infinite loop
     if (collision.moved) continue
@@ -501,18 +501,18 @@ export function validateLayout(layout: Layout, contextName: string): void {
       }
     }
 
-    if (item.i === undefined || item.i === null) {
-      throw new Error('GridLayout: ' + contextName + '[' + i + '].i cannot be null!')
+    if (item.id === undefined || item.id === null) {
+      throw new Error('GridLayout: ' + contextName + '[' + i + '].id cannot be null!')
     }
 
-    if (typeof item.i !== 'number' && typeof item.i !== 'string') {
-      throw new Error('GridLayout: ' + contextName + '[' + i + '].i must be a string or number!')
+    if (typeof item.id !== 'number' && typeof item.id !== 'string') {
+      throw new Error('GridLayout: ' + contextName + '[' + i + '].id must be a string or number!')
     }
 
-    if (keyArr.indexOf(item.i) >= 0) {
-      throw new Error('GridLayout: ' + contextName + '[' + i + '].i must be unique!')
+    if (keyArr.indexOf(item.id) >= 0) {
+      throw new Error('GridLayout: ' + contextName + '[' + i + '].id must be unique!')
     }
-    keyArr.push(item.i)
+    keyArr.push(item.id)
 
     if (item.static !== undefined && typeof item.static !== 'boolean') {
       throw new Error('GridLayout: ' + contextName + '[' + i + '].static must be a boolean!')

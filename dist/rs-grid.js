@@ -1,7 +1,7 @@
 var ln = Object.defineProperty;
 var cn = (t, e, i) => e in t ? ln(t, e, { enumerable: !0, configurable: !0, writable: !0, value: i }) : t[e] = i;
-var d = (t, e, i) => (cn(t, typeof e != "symbol" ? e + "" : e, i), i);
-import { openBlock as hi, createElementBlock as fi, normalizeClass as He, normalizeStyle as di, renderSlot as Wt, createElementVNode as un, createCommentVNode as Oe, resolveComponent as hn, withDirectives as fn, createVNode as dn, vShow as pn } from "vue";
+var f = (t, e, i) => (cn(t, typeof e != "symbol" ? e + "" : e, i), i);
+import { openBlock as hi, createElementBlock as di, normalizeClass as He, normalizeStyle as fi, renderSlot as Wt, createElementVNode as un, createCommentVNode as Oe, resolveComponent as hn, withDirectives as dn, createVNode as fn, vShow as pn } from "vue";
 function gn(t) {
   return { all: t = t || /* @__PURE__ */ new Map(), on: function(e, i) {
     var n = t.get(e);
@@ -186,7 +186,7 @@ var Ae = ae, Tn = function(e) {
   s && !n && (i && i.warn("Invalid options combination. auto=true and async=false is invalid. Setting async=true."), n = !0);
   var r = Be(), o, a = !1;
   function c(v, z) {
-    !a && s && n && r.size() === 0 && f(), r.add(v, z);
+    !a && s && n && r.size() === 0 && d(), r.add(v, z);
   }
   function l() {
     for (a = !0; r.size(); ) {
@@ -196,9 +196,9 @@ var Ae = ae, Tn = function(e) {
     a = !1;
   }
   function u(v) {
-    a || (v === void 0 && (v = n), o && (g(o), o = null), v ? f() : l());
+    a || (v === void 0 && (v = n), o && (g(o), o = null), v ? d() : l());
   }
-  function f() {
+  function d() {
     o = y(l);
   }
   function g(v) {
@@ -257,26 +257,26 @@ var Rn = {
   if (!e)
     throw new Error("Missing required dependency: reporter.");
   function s(l, u) {
-    function f() {
+    function d() {
       u(l);
     }
     if (zt.isIE(8))
       n(l).object = {
-        proxy: f
-      }, l.attachEvent("onresize", f);
+        proxy: d
+      }, l.attachEvent("onresize", d);
     else {
       var g = a(l);
       if (!g)
         throw new Error("Element is not detectable by this strategy.");
-      g.contentDocument.defaultView.addEventListener("resize", f);
+      g.contentDocument.defaultView.addEventListener("resize", d);
     }
   }
   function r(l) {
     var u = t.important ? " !important; " : "; ";
     return (l.join(u) + u).trim();
   }
-  function o(l, u, f) {
-    f || (f = u, u = l, l = null), l = l || {}, l.debug;
+  function o(l, u, d) {
+    d || (d = u, u = l, l = null), l = l || {}, l.debug;
     function g(y, v) {
       var z = r(["display: block", "position: absolute", "top: 0", "left: 0", "width: 100%", "height: 100%", "border: none", "padding: 0", "margin: 0", "opacity: 0", "z-index: -1000", "pointer-events: none"]), M = !1, _ = window.getComputedStyle(y), S = y.offsetWidth, I = y.offsetHeight;
       n(y).startSize = {
@@ -320,7 +320,7 @@ var Rn = {
       }
       i ? i.add(m) : m();
     }
-    zt.isIE(8) ? f(u) : g(u, f);
+    zt.isIE(8) ? d(u) : g(u, d);
   }
   function a(l) {
     return n(l).object;
@@ -347,7 +347,7 @@ var Rn = {
     throw new Error("Missing required dependency: reporter.");
   var r = u(), o = "erd_scroll_detection_scrollbar_style", a = "erd_scroll_detection_container";
   function c(m) {
-    f(m, o, a);
+    d(m, o, a);
   }
   c(window.document);
   function l(m) {
@@ -365,7 +365,7 @@ var Rn = {
       height: O
     };
   }
-  function f(m, h, T) {
+  function d(m, h, T) {
     function b(B, D) {
       D = D || function(N) {
         m.head.appendChild(N);
@@ -690,19 +690,19 @@ var Nn = function(t) {
   a.callOnAdd = !!et(t, "callOnAdd", !0), a.debug = !!et(t, "debug", !1);
   var c = Hn(e), l = $n({
     stateHandler: tt
-  }), u, f = et(t, "strategy", "object"), g = et(t, "important", !1), y = {
+  }), u, d = et(t, "strategy", "object"), g = et(t, "important", !1), y = {
     reporter: s,
     batchProcessor: o,
     stateHandler: tt,
     idHandler: e,
     important: g
   };
-  if (f === "scroll" && (Le.isLegacyOpera() ? (s.warn("Scroll strategy is not supported on legacy Opera. Changing to object strategy."), f = "object") : Le.isIE(9) && (s.warn("Scroll strategy is not supported on IE9. Changing to object strategy."), f = "object")), f === "scroll")
+  if (d === "scroll" && (Le.isLegacyOpera() ? (s.warn("Scroll strategy is not supported on legacy Opera. Changing to object strategy."), d = "object") : Le.isIE(9) && (s.warn("Scroll strategy is not supported on IE9. Changing to object strategy."), d = "object")), d === "scroll")
     u = jn(y);
-  else if (f === "object")
+  else if (d === "object")
     u = Wn(y);
   else
-    throw new Error("Invalid strategy name: " + f);
+    throw new Error("Invalid strategy name: " + d);
   var v = {};
   function z(S, I, m) {
     function h(B) {
@@ -814,7 +814,7 @@ function Yn(t, e, i, n) {
     for (; e.y > 0 && !Dt(t, e); )
       e.y--;
   else if (n) {
-    const r = n[e.i].y;
+    const r = n[e.id].y;
     for (; e.y > r && !Dt(t, e); )
       e.y--;
   }
@@ -837,7 +837,7 @@ function qn(t, e) {
 }
 function Fe(t, e) {
   for (let i = 0, n = t.length; i < n; i++)
-    if (t[i].i === e)
+    if (t[i].id === e)
       return t[i];
 }
 function Dt(t, e) {
@@ -861,8 +861,8 @@ function ce(t, e, i, n, s, r) {
   const u = yi(l, e);
   if (r && u.length)
     return e.x = o, e.y = a, e.moved = !1, t;
-  for (let f = 0, g = u.length; f < g; f++) {
-    const y = u[f];
+  for (let d = 0, g = u.length; d < g; d++) {
+    const y = u[d];
     y.moved || e.y > y.y && e.y - y.y > y.h / 4 || (y.static ? t = Xe(t, y, e, s) : t = Xe(t, e, y, s));
   }
   return t;
@@ -942,13 +942,13 @@ function Jn(t, e) {
         throw new Error(
           "GridLayout: " + e + "[" + s + "]." + i[a] + " must be a number!"
         );
-    if (o.i === void 0 || o.i === null)
-      throw new Error("GridLayout: " + e + "[" + s + "].i cannot be null!");
-    if (typeof o.i != "number" && typeof o.i != "string")
-      throw new Error("GridLayout: " + e + "[" + s + "].i must be a string or number!");
-    if (n.indexOf(o.i) >= 0)
-      throw new Error("GridLayout: " + e + "[" + s + "].i must be unique!");
-    if (n.push(o.i), o.static !== void 0 && typeof o.static != "boolean")
+    if (o.id === void 0 || o.id === null)
+      throw new Error("GridLayout: " + e + "[" + s + "].id cannot be null!");
+    if (typeof o.id != "number" && typeof o.id != "string")
+      throw new Error("GridLayout: " + e + "[" + s + "].id must be a string or number!");
+    if (n.indexOf(o.id) >= 0)
+      throw new Error("GridLayout: " + e + "[" + s + "].id must be unique!");
+    if (n.push(o.id), o.static !== void 0 && typeof o.static != "boolean")
       throw new Error("GridLayout: " + e + "[" + s + "].static must be a boolean!");
   }
 }
@@ -973,7 +973,7 @@ function Qn(t, e, i, n, s, r, o) {
     return le(e[n]);
   let a = t;
   const c = xi(i), l = c.slice(c.indexOf(n));
-  for (let u = 0, f = l.length; u < f; u++) {
+  for (let u = 0, d = l.length; u < d; u++) {
     const g = l[u];
     if (e[g]) {
       a = e[g];
@@ -1065,12 +1065,12 @@ typeof window < "u" && window && zi(window);
 function ht(t) {
   return Si(t) ? t : (t.ownerDocument || t).defaultView || it.window;
 }
-const as = (t) => t === it || Si(t), ls = (t) => Kt(t) && t.nodeType === 11, Kt = (t) => !!t && typeof t == "object", Ii = (t) => typeof t == "function", cs = (t) => typeof t == "number", us = (t) => typeof t == "boolean", hs = (t) => typeof t == "string", fs = (t) => {
+const as = (t) => t === it || Si(t), ls = (t) => Kt(t) && t.nodeType === 11, Kt = (t) => !!t && typeof t == "object", Ii = (t) => typeof t == "function", cs = (t) => typeof t == "number", us = (t) => typeof t == "boolean", hs = (t) => typeof t == "string", ds = (t) => {
   if (!t || typeof t != "object")
     return !1;
   const e = ht(t) || it;
   return /object|function/.test(typeof Element) ? t instanceof Element || t instanceof e.Element : t.nodeType === 1 && typeof t.nodeName == "string";
-}, ds = (t) => Kt(t) && !!t.constructor && /function Object\b/.test(t.constructor.toString()), ps = (t) => Kt(t) && typeof t.length < "u" && Ii(t.splice), p = {
+}, fs = (t) => Kt(t) && !!t.constructor && /function Object\b/.test(t.constructor.toString()), ps = (t) => Kt(t) && typeof t.length < "u" && Ii(t.splice), p = {
   window: as,
   docFrag: ls,
   object: Kt,
@@ -1078,8 +1078,8 @@ const as = (t) => t === it || Si(t), ls = (t) => Kt(t) && t.nodeType === 11, Kt 
   number: cs,
   bool: us,
   string: hs,
-  element: fs,
-  plainObject: ds,
+  element: ds,
+  plainObject: fs,
   array: ps
 }, Y = {
   init: gs,
@@ -1180,11 +1180,11 @@ function Ve(t, e) {
 }
 class Di {
   constructor(e) {
-    d(this, "options");
-    d(this, "types", {});
-    d(this, "propagationStopped", !1);
-    d(this, "immediatePropagationStopped", !1);
-    d(this, "global");
+    f(this, "options");
+    f(this, "types", {});
+    f(this, "propagationStopped", !1);
+    f(this, "immediatePropagationStopped", !1);
+    f(this, "global");
     this.options = w({}, e || {});
   }
   fire(e) {
@@ -1224,7 +1224,7 @@ function ut(t, e) {
 }
 function Ci(t, e) {
   for (; p.element(t); ) {
-    if (ft(t, e))
+    if (dt(t, e))
       return t;
     t = nt(t);
   }
@@ -1239,15 +1239,15 @@ function nt(t) {
   }
   return e;
 }
-function ft(t, e) {
+function dt(t, e) {
   return it !== Ei && (e = e.replace(/\/deep\//g, " ")), t[q.prefixedMatchesSelector](e);
 }
-function fe(t, e, i) {
+function de(t, e, i) {
   for (; p.element(t); ) {
-    if (ft(t, e))
+    if (dt(t, e))
       return !0;
     if (t = nt(t), t === i)
-      return ft(t, e);
+      return dt(t, e);
   }
   return !1;
 }
@@ -1314,8 +1314,8 @@ function Ee(t, e, i) {
 const Zt = (t, e) => Math.sqrt(t * t + e * e);
 class _i {
   constructor(e) {
-    d(this, "immediatePropagationStopped", !1);
-    d(this, "propagationStopped", !1);
+    f(this, "immediatePropagationStopped", !1);
+    f(this, "propagationStopped", !1);
     this._interaction = e;
   }
   preventDefault() {
@@ -1358,39 +1358,39 @@ class ze extends _i {
   /** */
   constructor(i, n, s, r, o, a, c) {
     super(i);
-    d(this, "relatedTarget", null);
-    d(this, "screenX");
-    d(this, "screenY");
-    d(this, "button");
-    d(this, "buttons");
-    d(this, "ctrlKey");
-    d(this, "shiftKey");
-    d(this, "altKey");
-    d(this, "metaKey");
-    d(this, "page");
-    d(this, "client");
-    d(this, "delta");
-    d(this, "rect");
-    d(this, "x0");
-    d(this, "y0");
-    d(this, "t0");
-    d(this, "dt");
-    d(this, "duration");
-    d(this, "clientX0");
-    d(this, "clientY0");
-    d(this, "velocity");
-    d(this, "speed");
-    d(this, "swipe");
+    f(this, "relatedTarget", null);
+    f(this, "screenX");
+    f(this, "screenY");
+    f(this, "button");
+    f(this, "buttons");
+    f(this, "ctrlKey");
+    f(this, "shiftKey");
+    f(this, "altKey");
+    f(this, "metaKey");
+    f(this, "page");
+    f(this, "client");
+    f(this, "delta");
+    f(this, "rect");
+    f(this, "x0");
+    f(this, "y0");
+    f(this, "t0");
+    f(this, "dt");
+    f(this, "duration");
+    f(this, "clientX0");
+    f(this, "clientY0");
+    f(this, "velocity");
+    f(this, "speed");
+    f(this, "swipe");
     // resize
-    d(this, "axes");
-    d(this, "preEnd");
+    f(this, "axes");
+    f(this, "preEnd");
     o = o || i.element;
-    const l = i.interactable, u = (l && l.options || Pi).deltaSource, f = Ee(l, o, s), g = r === "start", y = r === "end", v = g ? this : i.prevEvent, z = g ? i.coords.start : y ? {
+    const l = i.interactable, u = (l && l.options || Pi).deltaSource, d = Ee(l, o, s), g = r === "start", y = r === "end", v = g ? this : i.prevEvent, z = g ? i.coords.start : y ? {
       page: v.page,
       client: v.client,
       timeStamp: i.coords.cur.timeStamp
     } : i.coords.cur;
-    this.page = w({}, z.page), this.client = w({}, z.client), this.rect = w({}, i.rect), this.timeStamp = z.timeStamp, y || (this.page.x -= f.x, this.page.y -= f.y, this.client.x -= f.x, this.client.y -= f.y), this.ctrlKey = n.ctrlKey, this.altKey = n.altKey, this.shiftKey = n.shiftKey, this.metaKey = n.metaKey, this.button = n.button, this.buttons = n.buttons, this.target = o, this.currentTarget = o, this.preEnd = a, this.type = c || s + (r || ""), this.interactable = l, this.t0 = g ? i.pointers[i.pointers.length - 1].downTime : v.t0, this.x0 = i.coords.start.page.x - f.x, this.y0 = i.coords.start.page.y - f.y, this.clientX0 = i.coords.start.client.x - f.x, this.clientY0 = i.coords.start.client.y - f.y, g || y ? this.delta = {
+    this.page = w({}, z.page), this.client = w({}, z.client), this.rect = w({}, i.rect), this.timeStamp = z.timeStamp, y || (this.page.x -= d.x, this.page.y -= d.y, this.client.x -= d.x, this.client.y -= d.y), this.ctrlKey = n.ctrlKey, this.altKey = n.altKey, this.shiftKey = n.shiftKey, this.metaKey = n.metaKey, this.button = n.button, this.buttons = n.buttons, this.target = o, this.currentTarget = o, this.preEnd = a, this.type = c || s + (r || ""), this.interactable = l, this.t0 = g ? i.pointers[i.pointers.length - 1].downTime : v.t0, this.x0 = i.coords.start.page.x - d.x, this.y0 = i.coords.start.page.y - d.y, this.clientX0 = i.coords.start.client.x - d.x, this.clientY0 = i.coords.start.client.y - d.y, g || y ? this.delta = {
       x: 0,
       y: 0
     } : this.delta = {
@@ -1625,7 +1625,7 @@ function It() {
     timeStamp: 0
   };
 }
-function de(t, e) {
+function fe(t, e) {
   if (e.phaselessTypes[t])
     return !0;
   for (const i in e.map)
@@ -1638,7 +1638,7 @@ function Rs(t) {
     let s = t.interactables.get(i, n);
     return s || (s = t.interactables.new(i, n), s.events.global = e.globalEvents), s;
   };
-  return e.getPointerAverage = Oi, e.getTouchBBox = Ms, e.getTouchDistance = Ts, e.getTouchAngle = Ds, e.getElementRect = we, e.getElementClientRect = xe, e.matchesSelector = ft, e.closest = Ci, e.globalEvents = {}, e.version = "1.10.17", e.scope = t, e.use = function(i, n) {
+  return e.getPointerAverage = Oi, e.getTouchBBox = Ms, e.getTouchDistance = Ts, e.getTouchAngle = Ds, e.getElementRect = we, e.getElementClientRect = xe, e.matchesSelector = dt, e.closest = Ci, e.globalEvents = {}, e.version = "1.10.17", e.scope = t, e.use = function(i, n) {
     return this.scope.usePlugin(i, n), this;
   }, e.isSet = function(i, n) {
     return !!this.scope.interactables.get(i, n && n.context);
@@ -1653,7 +1653,7 @@ function Rs(t) {
         this.on(o, n[o], s);
       return this;
     }
-    return de(n, this.scope.actions) ? this.globalEvents[n] ? this.globalEvents[n].push(s) : this.globalEvents[n] = [s] : this.scope.events.add(this.scope.document, n, s, {
+    return fe(n, this.scope.actions) ? this.globalEvents[n] ? this.globalEvents[n].push(s) : this.globalEvents[n] = [s] : this.scope.events.add(this.scope.document, n, s, {
       options: r
     }), this;
   }, "The interact.on() method is being deprecated"), e.off = Pt(function(n, s, r) {
@@ -1667,7 +1667,7 @@ function Rs(t) {
         this.off(o, n[o], s);
       return this;
     }
-    if (de(n, this.scope.actions)) {
+    if (fe(n, this.scope.actions)) {
       let o;
       n in this.globalEvents && (o = this.globalEvents[n].indexOf(s)) !== -1 && this.globalEvents[n].splice(o, 1);
     } else
@@ -1694,16 +1694,16 @@ function Rs(t) {
 class _s {
   /** */
   constructor(e, i, n, s) {
-    d(this, "options");
-    d(this, "_actions");
-    d(this, "target");
-    d(this, "events", new Di());
-    d(this, "_context");
-    d(this, "_win");
-    d(this, "_doc");
-    d(this, "_scopeEvents");
+    f(this, "options");
+    f(this, "_actions");
+    f(this, "target");
+    f(this, "events", new Di());
+    f(this, "_context");
+    f(this, "_win");
+    f(this, "_doc");
+    f(this, "_scopeEvents");
     /** @internal */
-    d(this, "_rectChecker");
+    f(this, "_rectChecker");
     this._actions = i.actions, this.target = e, this._context = i.context || n, this._win = ht(Ze(e) ? this._context : e), this._doc = this._win.document, this._scopeEvents = s, this.set(i);
   }
   /** @internal */
@@ -1800,10 +1800,10 @@ class _s {
     return !this.testIgnore(e.ignoreFrom, i, n) && this.testAllow(e.allowFrom, i, n);
   }
   testAllow(e, i, n) {
-    return e ? p.element(n) ? p.string(e) ? fe(n, e, i) : p.element(e) ? ut(e, n) : !1 : !1 : !0;
+    return e ? p.element(n) ? p.string(e) ? de(n, e, i) : p.element(e) ? ut(e, n) : !1 : !1 : !0;
   }
   testIgnore(e, i, n) {
-    return !e || !p.element(n) ? !1 : p.string(e) ? fe(n, e, i) : p.element(e) ? ut(e, n) : !1;
+    return !e || !p.element(n) ? !1 : p.string(e) ? de(n, e, i) : p.element(e) ? ut(e, n) : !1;
   }
   /**
    * Calls listeners for the given InteractEvent type bound globally
@@ -1822,7 +1822,7 @@ class _s {
     for (let a in o) {
       a === "wheel" && (a = q.wheelEvent);
       for (const c of o[a])
-        de(a, this._actions) ? this.events[e](a, c) : p.string(this.target) ? this._scopeEvents[`${r}Delegate`](this.target, this._context, a, c, s) : this._scopeEvents[r](this.target, a, c, s);
+        fe(a, this._actions) ? this.events[e](a, c) : p.string(this.target) ? this._scopeEvents[`${r}Delegate`](this.target, this._context, a, c, s) : this._scopeEvents[r](this.target, a, c, s);
     }
     return this;
   }
@@ -1895,9 +1895,9 @@ class _s {
 class Ps {
   constructor(e) {
     // all set interactables
-    d(this, "list", []);
-    d(this, "selectorMap", {});
-    d(this, "scope");
+    f(this, "list", []);
+    f(this, "selectorMap", {});
+    f(this, "scope");
     this.scope = e, e.addListeners({
       "interactable:unset": ({
         interactable: i
@@ -1940,7 +1940,7 @@ class Ps {
       let s;
       if ((p.string(n.target) ? (
         // target is a selector and the element matches
-        p.element(e) && ft(e, n.target)
+        p.element(e) && dt(e, n.target)
       ) : (
         // target is the element
         e === n.target
@@ -1958,7 +1958,7 @@ function ks(t) {
     addDelegate: c,
     removeDelegate: l,
     delegateListener: u,
-    delegateUseCapture: f,
+    delegateUseCapture: d,
     delegatedEvents: n,
     documents: s,
     targets: i,
@@ -2011,7 +2011,7 @@ function ks(t) {
     if (!n[v]) {
       n[v] = [];
       for (const m of s)
-        o(m, v, u), o(m, v, f, !0);
+        o(m, v, u), o(m, v, d, !0);
     }
     const S = n[v];
     let I = he(S, (m) => m.selector === g && m.context === y);
@@ -2037,7 +2037,7 @@ function ks(t) {
               passive: R
             }] = T[b];
             if ($ === z && O === _.capture && R === _.passive) {
-              T.splice(b, 1), T.length || (S.splice(m, 1), a(y, v, u), a(y, v, f, !0)), I = !0;
+              T.splice(b, 1), T.length || (S.splice(m, 1), a(y, v, u), a(y, v, d, !0)), I = !0;
               break;
             }
           }
@@ -2055,7 +2055,7 @@ function ks(t) {
           selector: h,
           context: T
         } = m;
-        if (ft(S, h) && ut(T, _) && ut(T, S)) {
+        if (dt(S, h) && ut(T, _) && ut(T, S)) {
           const {
             listeners: b
           } = m;
@@ -2070,16 +2070,16 @@ function ks(t) {
       S = nt(S);
     }
   }
-  function f(g) {
+  function d(g) {
     return u.call(this, g, !0);
   }
   return r;
 }
 class $s {
   constructor(e) {
-    d(this, "currentTarget");
-    d(this, "originalEvent");
-    d(this, "type");
+    f(this, "currentTarget");
+    f(this, "originalEvent");
+    f(this, "type");
     this.originalEvent = e, $i(this, e);
   }
   preventOriginalDefault() {
@@ -2107,11 +2107,11 @@ const Hs = {
 };
 class Os {
   constructor(e, i, n, s, r) {
-    d(this, "id");
-    d(this, "pointer");
-    d(this, "event");
-    d(this, "downTime");
-    d(this, "downTarget");
+    f(this, "id");
+    f(this, "pointer");
+    f(this, "event");
+    f(this, "downTime");
+    f(this, "downTarget");
     this.id = e, this.pointer = i, this.event = n, this.downTime = s, this.downTarget = r;
   }
 }
@@ -2131,46 +2131,46 @@ class Bs {
     scopeFire: i
   }) {
     // current interactable being interacted with
-    d(this, "interactable", null);
+    f(this, "interactable", null);
     // the target element of the interactable
-    d(this, "element", null);
-    d(this, "rect", null);
-    d(this, "_rects");
-    d(this, "edges", null);
-    d(this, "_scopeFire");
+    f(this, "element", null);
+    f(this, "rect", null);
+    f(this, "_rects");
+    f(this, "edges", null);
+    f(this, "_scopeFire");
     // action that's ready to be fired on next move event
-    d(this, "prepared", {
+    f(this, "prepared", {
       name: null,
       axis: null,
       edges: null
     });
-    d(this, "pointerType");
+    f(this, "pointerType");
     // keep track of added pointers
-    d(this, "pointers", []);
+    f(this, "pointers", []);
     // pointerdown/mousedown/touchstart event
-    d(this, "downEvent", null);
-    d(this, "downPointer", {});
-    d(this, "_latestPointer", {
+    f(this, "downEvent", null);
+    f(this, "downPointer", {});
+    f(this, "_latestPointer", {
       pointer: null,
       event: null,
       eventTarget: null
     });
     // previous action event
-    d(this, "prevEvent", null);
-    d(this, "pointerIsDown", !1);
-    d(this, "pointerWasMoved", !1);
-    d(this, "_interacting", !1);
-    d(this, "_ending", !1);
-    d(this, "_stopped", !0);
-    d(this, "_proxy", null);
-    d(this, "simulation", null);
+    f(this, "prevEvent", null);
+    f(this, "pointerIsDown", !1);
+    f(this, "pointerWasMoved", !1);
+    f(this, "_interacting", !1);
+    f(this, "_ending", !1);
+    f(this, "_stopped", !0);
+    f(this, "_proxy", null);
+    f(this, "simulation", null);
     /**
      * @alias Interaction.prototype.move
      */
-    d(this, "doMove", Pt(function(e) {
+    f(this, "doMove", Pt(function(e) {
       this.move(e);
     }, "The interaction.doMove() method has been renamed to interaction.move()"));
-    d(this, "coords", {
+    f(this, "coords", {
       // Starting InteractEvent pointer coordinates
       start: It(),
       // Previous native pointer move event coordinates
@@ -2182,7 +2182,7 @@ class Bs {
       // pointer velocity
       velocity: It()
     });
-    d(this, "_id", As++);
+    f(this, "_id", As++);
     this._scopeFire = i, this.pointerType = e;
     const n = this;
     this._proxy = {};
@@ -2445,7 +2445,7 @@ function js(t, e, i) {
       if (!(r && r.events) || r.events.passive !== !1)
         return;
     }
-    /^(mouse|pointer|touch)*(down|start)/i.test(i.type) || p.element(i.target) && ft(i.target, "input,select,textarea,[contenteditable=true],[contenteditable=true] *") || i.preventDefault();
+    /^(mouse|pointer|touch)*(down|start)/i.test(i.type) || p.element(i.target) && dt(i.target, "input,select,textarea,[contenteditable=true],[contenteditable=true] *") || i.preventDefault();
   }
 }
 function Ns({
@@ -2653,7 +2653,7 @@ function Li(t, e) {
     if (/^touch/.test(i.type)) {
       e.prevTouchTime = e.now();
       for (const c of i.changedTouches) {
-        const l = c, u = Yt(l), f = {
+        const l = c, u = Yt(l), d = {
           pointer: l,
           pointerId: u,
           pointerType: s,
@@ -2661,8 +2661,8 @@ function Li(t, e) {
           eventTarget: r,
           curEventTarget: o,
           scope: e
-        }, g = ei(f);
-        a.push([f.pointer, f.eventTarget, f.curEventTarget, g]);
+        }, g = ei(d);
+        a.push([d.pointer, d.eventTarget, d.curEventTarget, g]);
       }
     } else {
       let c = !1;
@@ -2685,8 +2685,8 @@ function Li(t, e) {
         a.push([l.pointer, l.eventTarget, l.curEventTarget, u]);
       }
     }
-    for (const [c, l, u, f] of a)
-      f[t](c, i, l, u);
+    for (const [c, l, u, d] of a)
+      d[t](c, i, l, u);
   };
 }
 function ei(t) {
@@ -2747,13 +2747,13 @@ const Gs = {
 }, Us = Gs;
 class Ks {
   constructor() {
-    d(this, "id", `__interact_scope_${Math.floor(Math.random() * 100)}`);
-    d(this, "isInitialized", !1);
-    d(this, "listenerMaps", []);
-    d(this, "browser", q);
-    d(this, "defaults", Et(Pi));
-    d(this, "Eventable", Di);
-    d(this, "actions", {
+    f(this, "id", `__interact_scope_${Math.floor(Math.random() * 100)}`);
+    f(this, "isInitialized", !1);
+    f(this, "listenerMaps", []);
+    f(this, "browser", q);
+    f(this, "defaults", Et(Pi));
+    f(this, "Eventable", Di);
+    f(this, "actions", {
       map: {},
       phases: {
         start: !0,
@@ -2763,23 +2763,23 @@ class Ks {
       methodDict: {},
       phaselessTypes: {}
     });
-    d(this, "interactStatic", Rs(this));
-    d(this, "InteractEvent", ze);
-    d(this, "Interactable");
-    d(this, "interactables", new Ps(this));
+    f(this, "interactStatic", Rs(this));
+    f(this, "InteractEvent", ze);
+    f(this, "Interactable");
+    f(this, "interactables", new Ps(this));
     // main window
-    d(this, "_win");
+    f(this, "_win");
     // main document
-    d(this, "document");
+    f(this, "document");
     // main window
-    d(this, "window");
+    f(this, "window");
     // all documents being listened to
-    d(this, "documents", []);
-    d(this, "_plugins", {
+    f(this, "documents", []);
+    f(this, "_plugins", {
       list: [],
       map: {}
     });
-    d(this, "onWindowUnload", (e) => this.removeDocument(e.target));
+    f(this, "onWindowUnload", (e) => this.removeDocument(e.target));
     const e = this;
     this.Interactable = class extends _s {
       get _defaults() {
@@ -2999,10 +2999,10 @@ function ji(t, e, i, n, s) {
 }
 function cr(t, e, i, n, s, r, o) {
   for (let a = 0, c = n.length; a < c; a++) {
-    const l = n[a], u = s[a], f = l.getAction(e, i, t, u);
-    if (!f)
+    const l = n[a], u = s[a], d = l.getAction(e, i, t, u);
+    if (!d)
       continue;
-    const g = ji(f, l, u, r, o);
+    const g = ji(d, l, u, r, o);
     if (g)
       return {
         action: g,
@@ -3050,12 +3050,12 @@ function Qt(t, e, i, n) {
   let c = 0, l = 0, u = 0;
   if (!(r && o && a))
     return !1;
-  for (const f of n.interactions.list) {
-    const g = f.prepared.name;
-    if (f.interacting()) {
+  for (const d of n.interactions.list) {
+    const g = d.prepared.name;
+    if (d.interacting()) {
       if (c++, c >= a)
         return !1;
-      if (f.interactable === t && (l += g === i.name ? 1 : 0, l >= r || f.element === e && (u++, g === i.name && u >= o)))
+      if (d.interactable === t && (l += g === i.name ? 1 : 0, l >= r || d.element === e && (u++, g === i.name && u >= o)))
         return !1;
     }
   }
@@ -3114,18 +3114,18 @@ function hr({
   if (t.prepared.axis = a.lockAxis === "start" ? l[0] : a.lockAxis, l !== "xy" && c !== "xy" && c !== l) {
     t.prepared.name = null;
     let u = e;
-    const f = function(g) {
+    const d = function(g) {
       if (g === t.interactable)
         return;
       const y = t.interactable.options.drag;
       if (!y.manualStart && g.testIgnoreAllow(y, u, e)) {
         const v = g.getAction(t.downPointer, t.downEvent, t, u);
-        if (v && v.name === "drag" && fr(l, g) && Me.validateAction(v, g, u, e, s))
+        if (v && v.name === "drag" && dr(l, g) && Me.validateAction(v, g, u, e, s))
           return g;
       }
     };
     for (; p.element(u); ) {
-      const g = s.interactables.forEachMatch(u, f);
+      const g = s.interactables.forEachMatch(u, d);
       if (g) {
         t.prepared.name = "drag", t.interactable = g, t.element = u;
         break;
@@ -3134,13 +3134,13 @@ function hr({
     }
   }
 }
-function fr(t, e) {
+function dr(t, e) {
   if (!e)
     return !1;
   const i = e.options.drag.startAxis;
   return t === "xy" || i === "xy" || i === t;
 }
-const dr = {
+const fr = {
   id: "auto-start/dragAxis",
   listeners: {
     "autoStart:before-start": hr
@@ -3193,7 +3193,7 @@ const gr = {
 }, mr = gr, yr = {
   id: "auto-start",
   install(t) {
-    t.usePlugin(Me), t.usePlugin(mr), t.usePlugin(dr);
+    t.usePlugin(Me), t.usePlugin(mr), t.usePlugin(fr);
   }
 };
 Q.use(yr);
@@ -3246,9 +3246,9 @@ const E = {
       if (l.x || l.y) {
         const u = si(r);
         p.window(r) ? r.scrollBy(l.x, l.y) : r && (r.scrollLeft += l.x, r.scrollTop += l.y);
-        const f = si(r), g = {
-          x: f.x - u.x,
-          y: f.y - u.y
+        const d = si(r), g = {
+          x: d.x - u.x,
+          y: d.y - u.y
         };
         (g.x || g.y) && e.fire({
           type: "autoscroll",
@@ -3285,8 +3285,8 @@ const E = {
     if (p.window(u))
       r = e.clientX < E.margin, i = e.clientY < E.margin, n = e.clientX > u.innerWidth - E.margin, s = e.clientY > u.innerHeight - E.margin;
     else {
-      const f = xe(u);
-      r = e.clientX < f.left + E.margin, i = e.clientY < f.top + E.margin, n = e.clientX > f.right - E.margin, s = e.clientY > f.bottom - E.margin;
+      const d = xe(u);
+      r = e.clientX < d.left + E.margin, i = e.clientY < d.top + E.margin, n = e.clientX > d.right - E.margin, s = e.clientY > d.bottom - E.margin;
     }
     E.x = n ? 1 : r ? -1 : 0, E.y = s ? 1 : i ? -1 : 0, E.isScrolling || (E.margin = l.margin, E.speed = l.speed, E.start(t));
   }
@@ -3458,7 +3458,7 @@ function Tr(t, e, i, n, s, r, o) {
     e === n
   ) : (
     // otherwise check if element matches value as selector
-    fe(n, e, s)
+    de(n, e, s)
   ) : !1;
 }
 function Dr(t) {
@@ -3524,19 +3524,19 @@ function Rr({
   if (w(u, c), r) {
     if (w(c, o), s === "reposition") {
       if (c.top > c.bottom) {
-        const f = c.top;
-        c.top = c.bottom, c.bottom = f;
+        const d = c.top;
+        c.top = c.bottom, c.bottom = d;
       }
       if (c.left > c.right) {
-        const f = c.left;
-        c.left = c.right, c.right = f;
+        const d = c.left;
+        c.left = c.right, c.right = d;
       }
     }
   } else
     c.top = Math.min(o.top, a.bottom), c.bottom = Math.max(o.bottom, a.top), c.left = Math.min(o.left, a.right), c.right = Math.max(o.right, a.left);
   c.width = c.right - c.left, c.height = c.bottom - c.top;
-  for (const f in c)
-    l[f] = c[f] - u[f];
+  for (const d in c)
+    l[d] = c[d] - u[d];
   i.edges = e.prepared.edges, i.rect = c, i.deltaRect = l;
 }
 function _r({
@@ -3637,8 +3637,8 @@ const kr = () => {
       y: null
     };
     for (const [l, u] of e) {
-      const f = Math.round((n - a.x) / t[l]), g = Math.round((s - a.y) / t[u]);
-      c[l] = Math.max(o.left, Math.min(o.right, f * t[l] + a.x)), c[u] = Math.max(o.top, Math.min(o.bottom, g * t[u] + a.y));
+      const d = Math.round((n - a.x) / t[l]), g = Math.round((s - a.y) / t[u]);
+      c[l] = Math.max(o.left, Math.min(o.right, d * t[l] + a.x)), c[u] = Math.max(o.top, Math.min(o.bottom, g * t[u] + a.y));
     }
     return c;
   };
@@ -3659,18 +3659,18 @@ const kr = () => {
 }, Br = Ar;
 class qi {
   constructor(e) {
-    d(this, "states", []);
-    d(this, "startOffset", {
+    f(this, "states", []);
+    f(this, "startOffset", {
       left: 0,
       right: 0,
       top: 0,
       bottom: 0
     });
-    d(this, "startDelta");
-    d(this, "result");
-    d(this, "endResult");
-    d(this, "edges");
-    d(this, "interaction");
+    f(this, "startDelta");
+    f(this, "result");
+    f(this, "endResult");
+    f(this, "edges");
+    f(this, "interaction");
     this.interaction = e, this.result = Bt();
   }
   start({
@@ -3709,13 +3709,13 @@ class qi {
     } = e;
     e.coords = w({}, e.pageCoords), e.rect = w({}, r);
     const o = s ? this.states.slice(s) : this.states, a = Bt(e.coords, e.rect);
-    for (const f of o) {
+    for (const d of o) {
       var c;
       const {
         options: g
-      } = f, y = w({}, e.coords);
+      } = d, y = w({}, e.coords);
       let v = null;
-      (c = f.methods) != null && c.set && this.shouldDo(g, n, i) && (e.state = f, v = f.methods.set(e), Se(this.interaction.edges, e.rect, {
+      (c = d.methods) != null && c.set && this.shouldDo(g, n, i) && (e.state = d, v = d.methods.set(e), Se(this.interaction.edges, e.rect, {
         x: e.coords.x - y.x,
         y: e.coords.y - y.y
       })), a.eventProps.push(v);
@@ -3723,8 +3723,8 @@ class qi {
     a.delta.x = e.coords.x - e.pageCoords.x, a.delta.y = e.coords.y - e.pageCoords.y, a.rectDelta.left = e.rect.left - r.left, a.rectDelta.right = e.rect.right - r.right, a.rectDelta.top = e.rect.top - r.top, a.rectDelta.bottom = e.rect.bottom - r.bottom;
     const l = this.result.coords, u = this.result.rect;
     if (l && u) {
-      const f = a.rect.left !== u.left || a.rect.right !== u.right || a.rect.top !== u.top || a.rect.bottom !== u.bottom;
-      a.changed = f || l.x !== a.coords.x || l.y !== a.coords.y;
+      const d = a.rect.left !== u.left || a.rect.right !== u.right || a.rect.top !== u.top || a.rect.bottom !== u.bottom;
+      a.changed = d || l.x !== a.coords.x || l.y !== a.coords.y;
     }
     return a;
   }
@@ -3738,8 +3738,8 @@ class qi {
       startDelta: a
     } = this, c = o.delta;
     n === "start" && w(this.startDelta, o.delta);
-    for (const [f, g] of [[r, a], [s, c]])
-      f.page.x += g.x, f.page.y += g.y, f.client.x += g.x, f.client.y += g.y;
+    for (const [d, g] of [[r, a], [s, c]])
+      d.page.x += g.x, d.page.y += g.y, d.client.x += g.x, d.client.y += g.y;
     const {
       rectDelta: l
     } = this.result, u = e.rect || i.rect;
@@ -4078,7 +4078,7 @@ function Gr({
     bottom: 0
   }, r.offset || {});
   if (t && o) {
-    const c = dt(r.restriction, n, s);
+    const c = ft(r.restriction, n, s);
     if (c) {
       const l = c.right - c.left - t.width, u = c.bottom - c.top - t.height;
       l < 0 && (a.left += l, a.right += l), u < 0 && (a.top += u, a.bottom += u);
@@ -4095,13 +4095,13 @@ function Ur({
   const {
     options: n,
     offset: s
-  } = i, r = dt(n.restriction, e, t);
+  } = i, r = ft(n.restriction, e, t);
   if (!r)
     return;
   const o = bs(r);
   t.x = Math.max(Math.min(o.right - s.right, t.x), o.left + s.left), t.y = Math.max(Math.min(o.bottom - s.bottom, t.y), o.top + s.top);
 }
-function dt(t, e, i) {
+function ft(t, e, i) {
   return p.func(t) ? _t(t, e.interactable, e.element, [i.x, i.y, e]) : _t(t, e.interactable, e.element);
 }
 const Kr = {
@@ -4135,7 +4135,7 @@ function Jr({
   } = i;
   let s;
   if (n) {
-    const r = dt(n.offset, t, t.coords.start.page);
+    const r = ft(n.offset, t, t.coords.start.page);
     s = Jt(r);
   }
   s = s || {
@@ -4160,7 +4160,7 @@ function Zr({
   } = n;
   if (!e)
     return;
-  const o = w({}, t), a = dt(r.inner, i, o) || {}, c = dt(r.outer, i, o) || {};
+  const o = w({}, t), a = ft(r.inner, i, o) || {}, c = ft(r.outer, i, o) || {};
   ai(a, Ui), ai(c, Ki), e.top ? t.y = Math.min(Math.max(c.top + s.top, o.y), a.top + s.top) : e.bottom && (t.y = Math.max(Math.min(c.bottom + s.bottom, o.y), a.bottom + s.bottom)), e.left ? t.x = Math.min(Math.max(c.left + s.left, o.x), a.left + s.left) : e.right && (t.x = Math.max(Math.min(c.right + s.right, o.x), a.right + s.right));
 }
 function ai(t, e) {
@@ -4216,7 +4216,7 @@ function ao(t) {
   } = i;
   if (!s)
     return;
-  const o = Qe(dt(r.min, e, t.coords)) || so, a = Qe(dt(r.max, e, t.coords)) || ro;
+  const o = Qe(ft(r.min, e, t.coords)) || so, a = Qe(ft(r.max, e, t.coords)) || ro;
   i.options = {
     endOnly: r.endOnly,
     inner: w({}, Ct.noInner),
@@ -4254,8 +4254,8 @@ function ho(t) {
       y: e.coords.start.page.y
     };
   else {
-    const f = _t(a.offset, i, n, [e]);
-    l = Jt(f) || {
+    const d = _t(a.offset, i, n, [e]);
+    l = Jt(d) || {
       x: 0,
       y: 0
     }, l.x += c.x, l.y += c.y;
@@ -4263,11 +4263,11 @@ function ho(t) {
   const {
     relativePoints: u
   } = a;
-  r.offsets = s && u && u.length ? u.map((f, g) => ({
+  r.offsets = s && u && u.length ? u.map((d, g) => ({
     index: g,
-    relativePoint: f,
-    x: o.left - s.width * f.x + l.x,
-    y: o.top - s.height * f.y + l.y
+    relativePoint: d,
+    x: o.left - s.width * d.x + l.x,
+    y: o.top - s.height * d.y + l.y
   })) : [{
     index: 0,
     relativePoint: null,
@@ -4286,12 +4286,12 @@ function fo(t) {
   } = n, o = Ee(e.interactable, e.element, e.prepared.name), a = w({}, i), c = [];
   s.offsetWithOrigin || (a.x -= o.x, a.y -= o.y);
   for (const u of r) {
-    const f = a.x - u.x, g = a.y - u.y;
+    const d = a.x - u.x, g = a.y - u.y;
     for (let y = 0, v = s.targets.length; y < v; y++) {
       const z = s.targets[y];
       let M;
-      p.func(z) ? M = z(f, g, e._proxy, u, y) : M = z, M && c.push({
-        x: (p.number(M.x) ? M.x : f) + u.x,
+      p.func(z) ? M = z(d, g, e._proxy, u, y) : M = z, M && c.push({
+        x: (p.number(M.x) ? M.x : d) + u.x,
         y: (p.number(M.y) ? M.y : g) + u.y,
         range: p.number(M.range) ? M.range : s.range,
         source: z,
@@ -4311,22 +4311,22 @@ function fo(t) {
     }
   };
   for (const u of c) {
-    const f = u.range, g = u.x - a.x, y = u.y - a.y, v = Zt(g, y);
-    let z = v <= f;
-    f === 1 / 0 && l.inRange && l.range !== 1 / 0 && (z = !1), (!l.target || (z ? (
+    const d = u.range, g = u.x - a.x, y = u.y - a.y, v = Zt(g, y);
+    let z = v <= d;
+    d === 1 / 0 && l.inRange && l.range !== 1 / 0 && (z = !1), (!l.target || (z ? (
       // is the closest target in range?
-      l.inRange && f !== 1 / 0 ? (
+      l.inRange && d !== 1 / 0 ? (
         // the pointer is relatively deeper in this target
-        v / f < l.distance / l.range
+        v / d < l.distance / l.range
       ) : (
         // this target has Infinite range and the closest doesn't
-        f === 1 / 0 && l.range !== 1 / 0 || // OR this target is closer that the previous closest
+        d === 1 / 0 && l.range !== 1 / 0 || // OR this target is closer that the previous closest
         v < l.distance
       )
     ) : (
       // The other is not in range and the pointer is closer to this target
       !l.inRange && v < l.distance
-    ))) && (l.target = u, l.distance = v, l.range = f, l.inRange = z, l.delta.x = g, l.delta.y = y);
+    ))) && (l.target = u, l.distance = v, l.range = d, l.inRange = z, l.delta.x = g, l.delta.y = y);
   }
   return l.inRange && (i.x = l.target.x, i.y = l.target.y), n.closest = l, l;
 }
@@ -4391,9 +4391,9 @@ function vo(t) {
   for (const c of s.targets || []) {
     let l;
     if (p.func(c) ? l = c(o.x, o.y, e) : l = c, !!l) {
-      for (const [u, f] of i.targetFields)
-        if (u in l || f in l) {
-          l.x = l[u], l.y = l[f];
+      for (const [u, d] of i.targetFields)
+        if (u in l || d in l) {
+          l.x = l[u], l.y = l[d];
           break;
         }
       i.options.targets.push(l);
@@ -4647,7 +4647,7 @@ const Ji = (t, e) => {
       type: Number,
       required: !0
     },
-    i: {
+    id: {
       required: !0
     },
     dragIgnoreFrom: {
@@ -4852,7 +4852,7 @@ const Ji = (t, e) => {
           return;
         t[e] = n[1];
       }
-      this.$emit("container-resized", this.i, this.h, this.w, t.height, t.width);
+      this.$emit("container-resized", this.id, this.h, this.w, t.height, t.width);
     },
     handleResize(t) {
       if (this.static)
@@ -4877,7 +4877,7 @@ const Ji = (t, e) => {
           break;
         }
       }
-      r = this.calcWH(s.height, s.width), r.w < this.minW && (r.w = this.minW), r.w > this.maxW && (r.w = this.maxW), r.h < this.minH && (r.h = this.minH), r.h > this.maxH && (r.h = this.maxH), r.h < 1 && (r.h = 1), r.w < 1 && (r.w = 1), this.lastW = i, this.lastH = n, (this.innerW !== r.w || this.innerH !== r.h) && this.$emit("resize", this.i, r.h, r.w, s.height, s.width), t.type === "resizeend" && (this.previousW !== this.innerW || this.previousH !== this.innerH) && this.$emit("resized", this.i, r.h, r.w, s.height, s.width), this.eventBus.$emit("resizeEvent", t.type, this.i, this.innerX, this.innerY, r.h, r.w);
+      r = this.calcWH(s.height, s.width), r.w < this.minW && (r.w = this.minW), r.w > this.maxW && (r.w = this.maxW), r.h < this.minH && (r.h = this.minH), r.h > this.maxH && (r.h = this.maxH), r.h < 1 && (r.h = 1), r.w < 1 && (r.w = 1), this.lastW = i, this.lastH = n, (this.innerW !== r.w || this.innerH !== r.h) && this.$emit("resize", this.id, r.h, r.w, s.height, s.width), t.type === "resizeend" && (this.previousW !== this.innerW || this.previousH !== this.innerH) && this.$emit("resized", this.id, r.h, r.w, s.height, s.width), this.eventBus.$emit("resizeEvent", t.type, this.id, this.innerX, this.innerY, r.h, r.w);
     },
     handleDrag(t) {
       if (this.static || this.isResizing)
@@ -4891,16 +4891,16 @@ const Ji = (t, e) => {
         case "dragstart": {
           this.previousX = this.innerX, this.previousY = this.innerY;
           let o = t.target.offsetParent.getBoundingClientRect(), a = t.target.getBoundingClientRect();
-          const c = a.left / this.transformScale, l = o.left / this.transformScale, u = a.right / this.transformScale, f = o.right / this.transformScale, g = a.top / this.transformScale, y = o.top / this.transformScale;
-          this.renderRtl ? s.left = (u - f) * -1 : s.left = c - l, s.top = g - y, this.dragging = s, this.isDragging = !0;
+          const c = a.left / this.transformScale, l = o.left / this.transformScale, u = a.right / this.transformScale, d = o.right / this.transformScale, g = a.top / this.transformScale, y = o.top / this.transformScale;
+          this.renderRtl ? s.left = (u - d) * -1 : s.left = c - l, s.top = g - y, this.dragging = s, this.isDragging = !0;
           break;
         }
         case "dragend": {
           if (!this.isDragging)
             return;
           let o = t.target.offsetParent.getBoundingClientRect(), a = t.target.getBoundingClientRect();
-          const c = a.left / this.transformScale, l = o.left / this.transformScale, u = a.right / this.transformScale, f = o.right / this.transformScale, g = a.top / this.transformScale, y = o.top / this.transformScale;
-          this.renderRtl ? s.left = (u - f) * -1 : s.left = c - l, s.top = g - y, this.dragging = null, this.isDragging = !1;
+          const c = a.left / this.transformScale, l = o.left / this.transformScale, u = a.right / this.transformScale, d = o.right / this.transformScale, g = a.top / this.transformScale, y = o.top / this.transformScale;
+          this.renderRtl ? s.left = (u - d) * -1 : s.left = c - l, s.top = g - y, this.dragging = null, this.isDragging = !1;
           break;
         }
         case "dragmove": {
@@ -4916,7 +4916,7 @@ const Ji = (t, e) => {
         }
       }
       let r;
-      this.renderRtl ? r = this.calcXY(s.top, s.left) : r = this.calcXY(s.top, s.left), this.lastX = i, this.lastY = n, (this.innerX !== r.x || this.innerY !== r.y) && this.$emit("move", this.i, r.x, r.y), t.type === "dragend" && (this.previousX !== this.innerX || this.previousY !== this.innerY) && this.$emit("moved", this.i, r.x, r.y), this.eventBus.$emit("dragEvent", t.type, this.i, r.x, r.y, this.innerH, this.innerW);
+      this.renderRtl ? r = this.calcXY(s.top, s.left) : r = this.calcXY(s.top, s.left), this.lastX = i, this.lastY = n, (this.innerX !== r.x || this.innerY !== r.y) && this.$emit("move", this.id, r.x, r.y), t.type === "dragend" && (this.previousX !== this.innerX || this.previousY !== this.innerY) && this.$emit("moved", this.id, r.x, r.y), this.eventBus.$emit("dragEvent", t.type, this.id, r.x, r.y, this.innerH, this.innerW);
     },
     calcPosition(t, e, i, n) {
       const s = this.calcColWidth();
@@ -5038,10 +5038,10 @@ const Ji = (t, e) => {
     autoSize() {
       this.previousW = this.innerW, this.previousH = this.innerH;
       let t = this.$slots.default()[0].elm.getBoundingClientRect(), e = this.calcWH(t.height, t.width, !0);
-      e.w < this.minW && (e.w = this.minW), e.w > this.maxW && (e.w = this.maxW), e.h < this.minH && (e.h = this.minH), e.h > this.maxH && (e.h = this.maxH), e.h < 1 && (e.h = 1), e.w < 1 && (e.w = 1), (this.innerW !== e.w || this.innerH !== e.h) && this.$emit("resize", this.i, e.h, e.w, t.height, t.width), (this.previousW !== e.w || this.previousH !== e.h) && (this.$emit("resized", this.i, e.h, e.w, t.height, t.width), this.eventBus.$emit(
+      e.w < this.minW && (e.w = this.minW), e.w > this.maxW && (e.w = this.maxW), e.h < this.minH && (e.h = this.minH), e.h > this.maxH && (e.h = this.maxH), e.h < 1 && (e.h = 1), e.w < 1 && (e.w = 1), (this.innerW !== e.w || this.innerH !== e.h) && this.$emit("resize", this.id, e.h, e.w, t.height, t.width), (this.previousW !== e.w || this.previousH !== e.h) && (this.$emit("resized", this.id, e.h, e.w, t.height, t.width), this.eventBus.$emit(
         "resizeEvent",
         "resizeend",
-        this.i,
+        this.id,
         this.innerX,
         this.innerY,
         e.h,
@@ -5051,10 +5051,10 @@ const Ji = (t, e) => {
   }
 };
 function ko(t, e, i, n, s, r) {
-  return hi(), fi("div", {
+  return hi(), di("div", {
     ref: "item",
     class: He(["vue-grid-item", r.classObj]),
-    style: di(s.style)
+    style: fi(s.style)
   }, [
     Wt(t.$slots, "default"),
     r.resizableAndNotStatic ? Wt(t.$slots, "resize-handle", {
@@ -5177,7 +5177,7 @@ const Ho = {
         y: 0,
         w: 0,
         h: 0,
-        i: -1
+        id: -1
       },
       // layout: [],
       layouts: {},
@@ -5269,7 +5269,7 @@ const Ho = {
       if (this.layout !== void 0 && this.originalLayout !== null) {
         if (this.layout.length !== this.originalLayout.length) {
           let t = this.findDifference(this.layout, this.originalLayout);
-          t.length > 0 && (this.layout.length > this.originalLayout.length ? this.originalLayout = this.originalLayout.concat(t) : this.originalLayout = this.originalLayout.filter((e) => !t.some((i) => e.i === i.i))), this.lastLayoutLength = this.layout.length, this.initResponsiveFeatures();
+          t.length > 0 && (this.layout.length > this.originalLayout.length ? this.originalLayout = this.originalLayout.concat(t) : this.originalLayout = this.originalLayout.filter((e) => !t.some((i) => e.id === i.id))), this.lastLayoutLength = this.layout.length, this.initResponsiveFeatures();
         }
         bt(this.layout, this.verticalCompact), this.eventBus.$emit("updateWidth", this.width), this.updateHeight(), this.$emit("layout-updated", this.layout);
       }
@@ -5288,12 +5288,12 @@ const Ho = {
     dragEvent(t, e, i, n, s, r) {
       let o = Fe(this.layout, e);
       o == null && (o = { x: 0, y: 0 }), t === "dragstart" && !this.verticalCompact && (this.positionsBeforeDrag = this.layout.reduce(
-        (a, { i: c, x: l, y: u }) => ({
+        (a, { id: c, x: l, y: u }) => ({
           ...a,
           [c]: { x: l, y: u }
         }),
         {}
-      )), t === "dragmove" || t === "dragstart" ? (this.placeholder.i = e, this.placeholder.x = o.x, this.placeholder.y = o.y, this.placeholder.w = r, this.placeholder.h = s, this.$nextTick(() => {
+      )), t === "dragmove" || t === "dragstart" ? (this.placeholder.id = e, this.placeholder.x = o.x, this.placeholder.y = o.y, this.placeholder.w = r, this.placeholder.h = s, this.$nextTick(() => {
         this.isDragging = !0;
       }), this.eventBus.$emit("updateWidth", this.width)) : this.$nextTick(() => {
         this.isDragging = !1;
@@ -5305,16 +5305,16 @@ const Ho = {
       let a;
       if (this.preventCollision) {
         const c = yi(this.layout, { ...o, w: r, h: s }).filter(
-          (l) => l.i !== o.i
+          (l) => l.id !== o.id
         );
         if (a = c.length > 0, a) {
           let l = 1 / 0, u = 1 / 0;
-          c.forEach((f) => {
-            f.x > o.x && (l = Math.min(l, f.x)), f.y > o.y && (u = Math.min(u, f.y));
+          c.forEach((d) => {
+            d.x > o.x && (l = Math.min(l, d.x)), d.y > o.y && (u = Math.min(u, d.y));
           }), Number.isFinite(l) && (o.w = l - o.x), Number.isFinite(u) && (o.h = u - o.y);
         }
       }
-      a || (o.w = r, o.h = s), t === "resizestart" || t === "resizemove" ? (this.placeholder.i = e, this.placeholder.x = i, this.placeholder.y = n, this.placeholder.w = o.w, this.placeholder.h = o.h, this.$nextTick(() => {
+      a || (o.w = r, o.h = s), t === "resizestart" || t === "resizemove" ? (this.placeholder.id = e, this.placeholder.x = i, this.placeholder.y = n, this.placeholder.w = o.w, this.placeholder.h = o.h, this.$nextTick(() => {
         this.isDragging = !0;
       }), this.eventBus.$emit("updateWidth", this.width)) : this.$nextTick(() => {
         this.isDragging = !1;
@@ -5341,27 +5341,27 @@ const Ho = {
     },
     // find difference in layouts
     findDifference(t, e) {
-      let i = t.filter((s) => !e.some((r) => s.i === r.i)), n = e.filter((s) => !t.some((r) => s.i === r.i));
+      let i = t.filter((s) => !e.some((r) => s.id === r.id)), n = e.filter((s) => !t.some((r) => s.id === r.id));
       return i.concat(n);
     }
   }
 };
 function Oo(t, e, i, n, s, r) {
   const o = hn("grid-item");
-  return hi(), fi("div", {
+  return hi(), di("div", {
     ref: "item",
     class: "vue-grid-layout",
-    style: di(s.mergedStyle)
+    style: fi(s.mergedStyle)
   }, [
     Wt(t.$slots, "default"),
-    fn(dn(o, {
+    dn(fn(o, {
       class: "vue-grid-placeholder",
       x: s.placeholder.x,
       y: s.placeholder.y,
       w: s.placeholder.w,
       h: s.placeholder.h,
-      i: s.placeholder.i
-    }, null, 8, ["x", "y", "w", "h", "i"]), [
+      id: s.placeholder.id
+    }, null, 8, ["x", "y", "w", "h", "id"]), [
       [pn, s.isDragging]
     ])
   ], 4);

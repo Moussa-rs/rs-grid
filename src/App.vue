@@ -6,8 +6,8 @@
       <div class="layoutJSON">
         Displayed as <code>[x, y, w, h]</code>:
         <div class="columns">
-          <div class="layoutItem" v-for="item in layout" :key="item.i">
-            <b>{{ item.i }}</b
+          <div class="layoutItem" v-for="item in layout" :key="item.id">
+            <b>{{ item.id }}</b
             >: [{{ item.x }}, {{ item.y }}, {{ item.w }}, {{ item.h }}]
           </div>
         </div>
@@ -16,7 +16,7 @@
               Displayed as <code>[x, y, w, h]</code>:
               <div class="columns">
                   <div class="layoutItem" v-for="item in layout2">
-                      <b>{{item.i}}</b>: [{{item.x}}, {{item.y}}, {{item.w}}, {{item.h}}]
+                      <b>{{item.id}}</b>: [{{item.x}}, {{item.y}}, {{item.w}}, {{item.h}}]
                   </div>
               </div>
           </div>-->
@@ -69,13 +69,13 @@
       >
         <grid-item
           v-for="item in layout"
-          :key="item.i"
+          :key="item.id"
           :static="item.static"
           :x="item.x"
           :y="item.y"
           :w="item.w"
           :h="item.h"
-          :i="item.i"
+          :id="item.id"
           :min-w="item.minW"
           :max-w="item.maxW"
           :min-x="item.minX"
@@ -89,8 +89,8 @@
           @container-resized="containerResized"
           @moved="moved"
         >
-          <!--<custom-drag-element :text="item.i"></custom-drag-element>-->
-          <test-element :text="item.i" @removeItem="removeItem($event)"></test-element>
+          <!--<custom-drag-element :text="item.id"></custom-drag-element>-->
+          <test-element :text="item.id" @removeItem="removeItem($event)"></test-element>
           <!--<button @click="clicked">CLICK ME!</button>-->
         </grid-item>
       </grid-layout>
@@ -104,18 +104,18 @@
                   :vertical-compact="true"
                   :use-css-transforms="true"
           >
-              <grid-item v-for="item in layout2" :key="item.i"
+              <grid-item v-for="item in layout2" :key="item.id"
                          :x="item.x"
                          :y="item.y"
                          :w="item.w"
                          :h="item.h"
                          :min-w="2"
                          :min-h="2"
-                         :i="item.i"
+                         :id="item.id"
                          :is-draggable="item.draggable"
                          :is-resizable="item.resizable"
               >
-                  <test-element :text="item.i"></test-element>
+                  <test-element :text="item.id"></test-element>
               </grid-item>
           </grid-layout> -->
     </div>
@@ -137,20 +137,20 @@ let testLayout = [
     y: 0,
     w: 2,
     h: 2,
-    i: '0',
+    id: '0',
     resizable: true,
     draggable: true,
     static: false,
     minY: 0,
     maxY: 2
   },
-  { x: 2, y: 0, w: 2, h: 4, i: '1', resizable: null, draggable: null, static: true },
+  { x: 2, y: 0, w: 2, h: 4, id: '1', resizable: null, draggable: null, static: true },
   {
     x: 4,
     y: 0,
     w: 2,
     h: 5,
-    i: '2',
+    id: '2',
     resizable: true,
     draggable: true,
     static: false,
@@ -165,36 +165,36 @@ let testLayout = [
     y: 0,
     w: 2,
     h: 3,
-    i: '3',
+    id: '3',
     resizable: true,
     draggable: true,
     static: false,
     preserveAspectRatio: true
   },
-  { x: 8, y: 0, w: 2, h: 3, i: '4', resizable: true, draggable: true, static: false },
-  { x: 10, y: 0, w: 2, h: 3, i: '5', resizable: true, draggable: true, static: false },
-  { x: 0, y: 5, w: 2, h: 5, i: '6', resizable: true, draggable: true, static: false },
-  { x: 2, y: 5, w: 2, h: 5, i: '7', resizable: true, draggable: true, static: false },
-  { x: 4, y: 5, w: 2, h: 5, i: '8', resizable: true, draggable: true, static: false },
-  { x: 6, y: 3, w: 2, h: 4, i: '9', resizable: true, draggable: true, static: true },
-  { x: 8, y: 4, w: 2, h: 4, i: '10', resizable: true, draggable: true, static: false },
-  { x: 10, y: 4, w: 2, h: 4, i: '11', resizable: true, draggable: true, static: false, minY: 4 },
-  { x: 0, y: 10, w: 2, h: 5, i: '12', resizable: true, draggable: true, static: false },
-  { x: 2, y: 10, w: 2, h: 5, i: '13', resizable: true, draggable: true, static: false },
-  { x: 4, y: 8, w: 2, h: 4, i: '14', resizable: true, draggable: true, static: false },
-  { x: 6, y: 8, w: 2, h: 4, i: '15', resizable: true, draggable: true, static: false },
-  { x: 8, y: 10, w: 2, h: 5, i: '16', resizable: true, draggable: true, static: false },
-  { x: 10, y: 4, w: 2, h: 2, i: '17', resizable: true, draggable: true, static: false },
-  { x: 0, y: 9, w: 2, h: 3, i: '18', resizable: true, draggable: true, static: false },
-  { x: 2, y: 6, w: 2, h: 2, i: '19', resizable: true, draggable: true, static: false }
+  { x: 8, y: 0, w: 2, h: 3, id: '4', resizable: true, draggable: true, static: false },
+  { x: 10, y: 0, w: 2, h: 3, id: '5', resizable: true, draggable: true, static: false },
+  { x: 0, y: 5, w: 2, h: 5, id: '6', resizable: true, draggable: true, static: false },
+  { x: 2, y: 5, w: 2, h: 5, id: '7', resizable: true, draggable: true, static: false },
+  { x: 4, y: 5, w: 2, h: 5, id: '8', resizable: true, draggable: true, static: false },
+  { x: 6, y: 3, w: 2, h: 4, id: '9', resizable: true, draggable: true, static: true },
+  { x: 8, y: 4, w: 2, h: 4, id: '10', resizable: true, draggable: true, static: false },
+  { x: 10, y: 4, w: 2, h: 4, id: '11', resizable: true, draggable: true, static: false, minY: 4 },
+  { x: 0, y: 10, w: 2, h: 5, id: '12', resizable: true, draggable: true, static: false },
+  { x: 2, y: 10, w: 2, h: 5, id: '13', resizable: true, draggable: true, static: false },
+  { x: 4, y: 8, w: 2, h: 4, id: '14', resizable: true, draggable: true, static: false },
+  { x: 6, y: 8, w: 2, h: 4, id: '15', resizable: true, draggable: true, static: false },
+  { x: 8, y: 10, w: 2, h: 5, id: '16', resizable: true, draggable: true, static: false },
+  { x: 10, y: 4, w: 2, h: 2, id: '17', resizable: true, draggable: true, static: false },
+  { x: 0, y: 9, w: 2, h: 3, id: '18', resizable: true, draggable: true, static: false },
+  { x: 2, y: 6, w: 2, h: 2, id: '19', resizable: true, draggable: true, static: false }
 ]
 
 /*let testLayout = [
-      { x: 0, y: 0, w: 2, h: 2, i: "0" },
-      { x: 2, y: 0, w: 2, h: 2, i: "1" },
-      { x: 4, y: 0, w: 2, h: 2, i: "2" },
-      { x: 6, y: 0, w: 2, h: 2, i: "3" },
-      { x: 8, y: 0, w: 2, h: 2, i: "4" },
+      { x: 0, y: 0, w: 2, h: 2, id: "0" },
+      { x: 2, y: 0, w: 2, h: 2, id: "1" },
+      { x: 4, y: 0, w: 2, h: 2, id: "2" },
+      { x: 6, y: 0, w: 2, h: 2, id: "3" },
+      { x: 8, y: 0, w: 2, h: 2, id: "4" },
   ];*/
 
 export default {
@@ -254,15 +254,15 @@ export default {
       this.transformScale = 1
       document.getElementById('grid-layout').style.transform = 'scale(1)'
     },
-    removeItem: function (i) {
-      console.log('### REMOVE ' + i)
-      const index = this.layout.map((item) => item.i).indexOf(i)
+    removeItem: function (id) {
+      console.log('### REMOVE ' + id)
+      const index = this.layout.map((item) => item.id).indexOf(id)
       this.layout.splice(index, 1)
     },
     addItem: function () {
       // let self = this;
       //console.log("### LENGTH: " + this.layout.length);
-      let item = { x: 0, y: 0, w: 2, h: 2, i: this.index + '', whatever: 'bbb' }
+      let item = { x: 0, y: 0, w: 2, h: 2, id: this.index + '', whatever: 'bbb' }
       this.index++
       this.layout.push(item)
     },
@@ -275,26 +275,26 @@ export default {
         y: y,
         w: 2,
         h: 2,
-        i: this.index + ''
+        id: this.index + ''
       }
       this.index++
       this.layout.push(item)
     },
-    move: function (i, newX, newY) {
-      console.log('MOVE i=' + i + ', X=' + newX + ', Y=' + newY)
+    move: function (id, newX, newY) {
+      console.log('MOVE id=' + id + ', X=' + newX + ', Y=' + newY)
     },
-    resize: function (i, newH, newW, newHPx, newWPx) {
+    resize: function (id, newH, newW, newHPx, newWPx) {
       console.log(
-        'RESIZE i=' + i + ', H=' + newH + ', W=' + newW + ', H(px)=' + newHPx + ', W(px)=' + newWPx
+        'RESIZE id=' + id + ', H=' + newH + ', W=' + newW + ', H(px)=' + newHPx + ', W(px)=' + newWPx
       )
     },
-    moved: function (i, newX, newY) {
-      console.log('### MOVED i=' + i + ', X=' + newX + ', Y=' + newY)
+    moved: function (id, newX, newY) {
+      console.log('### MOVED id=' + id + ', X=' + newX + ', Y=' + newY)
     },
-    resized: function (i, newH, newW, newHPx, newWPx) {
+    resized: function (id, newH, newW, newHPx, newWPx) {
       console.log(
-        '### RESIZED i=' +
-          i +
+        '### RESIZED id=' +
+          id +
           ', H=' +
           newH +
           ', W=' +
@@ -305,10 +305,10 @@ export default {
           newWPx
       )
     },
-    containerResized: function (i, newH, newW, newHPx, newWPx) {
+    containerResized: function (id, newH, newW, newHPx, newWPx) {
       console.log(
-        '### CONTAINER RESIZED i=' +
-          i +
+        '### CONTAINER RESIZED id=' +
+          id +
           ', H=' +
           newH +
           ', W=' +

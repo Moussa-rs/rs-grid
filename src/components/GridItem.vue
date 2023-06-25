@@ -183,7 +183,7 @@ export default {
       type: Number,
       required: true
     },
-    i: {
+    id: {
       required: true
     },
     dragIgnoreFrom: {
@@ -533,7 +533,7 @@ export default {
         if (!matches) return
         styleProps[prop] = matches[1]
       }
-      this.$emit('container-resized', this.i, this.h, this.w, styleProps.height, styleProps.width)
+      this.$emit('container-resized', this.id, this.h, this.w, styleProps.height, styleProps.width)
     },
     handleResize(event) {
       if (this.static) return
@@ -608,15 +608,15 @@ export default {
       this.lastH = y
 
       if (this.innerW !== pos.w || this.innerH !== pos.h) {
-        this.$emit('resize', this.i, pos.h, pos.w, newSize.height, newSize.width)
+        this.$emit('resize', this.id, pos.h, pos.w, newSize.height, newSize.width)
       }
       if (
         event.type === 'resizeend' &&
         (this.previousW !== this.innerW || this.previousH !== this.innerH)
       ) {
-        this.$emit('resized', this.i, pos.h, pos.w, newSize.height, newSize.width)
+        this.$emit('resized', this.id, pos.h, pos.w, newSize.height, newSize.width)
       }
-      this.eventBus.$emit('resizeEvent', event.type, this.i, this.innerX, this.innerY, pos.h, pos.w)
+      this.eventBus.$emit('resizeEvent', event.type, this.id, this.innerX, this.innerY, pos.h, pos.w)
     },
     handleDrag(event) {
       if (this.static) return
@@ -720,16 +720,16 @@ export default {
       this.lastY = y
 
       if (this.innerX !== pos.x || this.innerY !== pos.y) {
-        this.$emit('move', this.i, pos.x, pos.y)
+        this.$emit('move', this.id, pos.x, pos.y)
       }
       if (
         event.type === 'dragend' &&
         (this.previousX !== this.innerX || this.previousY !== this.innerY)
       ) {
-        this.$emit('moved', this.i, pos.x, pos.y)
+        this.$emit('moved', this.id, pos.x, pos.y)
       }
 
-      this.eventBus.$emit('dragEvent', event.type, this.i, pos.x, pos.y, this.innerH, this.innerW)
+      this.eventBus.$emit('dragEvent', event.type, this.id, pos.x, pos.y, this.innerH, this.innerW)
     },
     calcPosition(x, y, w, h) {
       const colWidth = this.calcColWidth()
@@ -963,14 +963,14 @@ export default {
       // this.lastH = y;
 
       if (this.innerW !== pos.w || this.innerH !== pos.h) {
-        this.$emit('resize', this.i, pos.h, pos.w, newSize.height, newSize.width)
+        this.$emit('resize', this.id, pos.h, pos.w, newSize.height, newSize.width)
       }
       if (this.previousW !== pos.w || this.previousH !== pos.h) {
-        this.$emit('resized', this.i, pos.h, pos.w, newSize.height, newSize.width)
+        this.$emit('resized', this.id, pos.h, pos.w, newSize.height, newSize.width)
         this.eventBus.$emit(
           'resizeEvent',
           'resizeend',
-          this.i,
+          this.id,
           this.innerX,
           this.innerY,
           pos.h,

@@ -1,7 +1,7 @@
 <template>
   <span class="text">
     {{ text }}
-    <button>xxx</button>
+    <button>x</button>
     <span class="vue-draggable-handle"></span>
   </span>
 </template>

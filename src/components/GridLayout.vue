@@ -8,7 +8,7 @@
       :y="placeholder.y"
       :w="placeholder.w"
       :h="placeholder.h"
-      :i="placeholder.i"
+      :id="placeholder.id"
     ></grid-item>
   </div>
 </template>
@@ -153,7 +153,7 @@ export default {
         y: 0,
         w: 0,
         h: 0,
-        i: -1
+        id: -1
       },
       // layout: [],
       layouts: {}, // array to store all layouts from different breakpoints
@@ -165,15 +165,15 @@ export default {
     // this.layout = cloneLayout(this.layout)
     // Accessible refernces of s f=>or removing in beforeDestroy
     this.resizeEventHandler = (event_data) => {
-      let eventType, i, x, y, h, w
-      ;[eventType, i, x, y, h, w] = event_data
-      this.resizeEvent(eventType, i, x, y, h, w)
+      let eventType, id, x, y, h, w
+      ;[eventType, id, x, y, h, w] = event_data
+      this.resizeEvent(eventType, id, x, y, h, w)
     }
 
     this.dragEventHandler = (event_data) => {
-      let eventType, i, x, y, h, w
-      ;[eventType, i, x, y, h, w] = event_data
-      this.dragEvent(eventType, i, x, y, h, w)
+      let eventType, id, x, y, h, w
+      ;[eventType, id, x, y, h, w] = event_data
+      this.dragEvent(eventType, id, x, y, h, w)
     }
 
     this.eventBus = this.getEventBus()
@@ -314,7 +314,7 @@ export default {
             } else {
               this.originalLayout = this.originalLayout.filter((obj) => {
                 return !diff.some((obj2) => {
-                  return obj.i === obj2.i
+                  return obj.id === obj2.id
                 })
               })
             }
@@ -360,16 +360,16 @@ export default {
 
       if (eventName === 'dragstart' && !this.verticalCompact) {
         this.positionsBeforeDrag = this.layout.reduce(
-          (result, { i, x, y }) => ({
+          (result, { id, x, y }) => ({
             ...result,
-            [i]: { x, y }
+            [id]: { x, y }
           }),
           {}
         )
       }
 
       if (eventName === 'dragmove' || eventName === 'dragstart') {
-        this.placeholder.i = id
+        this.placeholder.id = id
         this.placeholder.x = l.x
         this.placeholder.y = l.y
         this.placeholder.w = w
@@ -416,7 +416,7 @@ export default {
       let hasCollisions
       if (this.preventCollision) {
         const collisions = getAllCollisions(this.layout, { ...l, w, h }).filter(
-          (layoutItem) => layoutItem.i !== l.i
+          (layoutItem) => layoutItem.id !== l.id
         )
         hasCollisions = collisions.length > 0
 
@@ -442,7 +442,7 @@ export default {
       }
 
       if (eventName === 'resizestart' || eventName === 'resizemove') {
-        this.placeholder.i = id
+        this.placeholder.id = id
         this.placeholder.x = x
         this.placeholder.y = y
         this.placeholder.w = l.w
@@ -512,14 +512,14 @@ export default {
       //Find values that are in result1 but not in result2
       let uniqueResultOne = layout.filter((obj) => {
         return !originalLayout.some((obj2) => {
-          return obj.i === obj2.i
+          return obj.id === obj2.id
         })
       })
 
       //Find values that are in result2 but not in result1
       let uniqueResultTwo = originalLayout.filter((obj) => {
         return !layout.some((obj2) => {
-          return obj.i === obj2.i
+          return obj.id === obj2.id
         })
       })
 
